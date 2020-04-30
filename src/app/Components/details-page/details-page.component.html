@@ -3,22 +3,33 @@
     <span *ngFor="let genre of title.genres; let i=index">
         {{genre}}{{i === title.genres.length - 1 ? '' : ', '}}
      </span>
-    <p style="margin: 20px 0px;">{{ title.storylines[0].description }}</p>
+    <p style="margin: 20px 0px;" *ngFor="let story of title.storylines | slice:0:storyLimit">
+        {{ story.type === 'Baseline' ? '' : story.type+':'}} {{ story.description }}
+    </p>
+    <button mat-button
+        *ngIf="title.storylines?.length > 1 || showStoryText === 'show less'"
+        (click)="showStories()">{{ showStoryText }}</button>
     <div class="row">
         <div class="column"><h3>Awards</h3>
-            <ul>
-                <li style="margin: 5px 0px;" *ngFor="let award of title.awards">
+            <ul *ngIf="title.awards">
+                <li style="margin: 5px 0px;" *ngFor="let award of title.awards | slice:0:awardLimit">
                     {{ award.awardCompany }} - {{ award.awardYear }} - {{ award.awardWon ? 'Won' : 'Nominated' }}
                 </li>
             </ul>
+            <button mat-button
+                *ngIf="title.awards?.length > awardLimit || showAwardText === 'show less'"
+                (click)="showAwards()">{{ showAwardText }}</button>
         </div>
         <div class="column"><h3>Cast</h3>
             <ul>
-                <li style="margin: 5px 0px;" *ngFor="let part of title.participants">
+                <li style="margin: 5px 0px;" *ngFor="let part of title.participants | slice:0:castLimit">
                     <span>{{ part.name }} - {{ part.roleType }}</span>
                     <span>Screen time: {{ part.isOnScreen ? 'Yes' : 'No' }}</span>
                 </li>
             </ul>
+            <button mat-button 
+                *ngIf="title.participants?.length > castLimit || showCastText === 'show less'"
+                (click)="showCast()">{{ showCastText }}</button>
         </div>
     </div>
 </div>

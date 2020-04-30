@@ -1,5 +1,14 @@
 <mat-card (click)="flipIt()">
+    <mat-card-header>
+        <h1>{{ title.titleName }}</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <span *ngFor="let genre of title.genres; let i=index">
+            {{genre}}{{i === title.genres.length - 1 ? '' : ', '}}
+        </span>
 
-<span><h1>{{ title.titleName }}</h1></span>
-
+        <p style="margin: 20px 0px;">
+            {{ title.storylines[0].description | slice:0:400}}{{ title.storylines[0].description.length > 400 ? '...' : '' }}
+        </p>
+    </mat-card-content>
 </mat-card>

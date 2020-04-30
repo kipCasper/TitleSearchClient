@@ -17,12 +17,18 @@
     margin: 8px 0;
   }
 
-  p {
-    margin: 0;
+  .mat-form-element {
+    margin: 10px 0px;
   }
 
-  .spacer {
-    flex: 1;
+  .input-field {
+    background-color: slategrey;
+    height: 30px;
+  }
+
+  .select-field {
+    background-color: slategrey;
+    height: 30px;
   }
 
   .toolbar {
