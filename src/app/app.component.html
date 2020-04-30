@@ -1,0 +1,43 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <span style="margin-left: 20px;">Title Search - a place to search titles</span>
+    <div class="spacer"></div>
+    <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://github.com/kipCasper" title="Github">
+      <img src="./assets\github.png" style="height: 50px; width: 50px;">
+    </a>
+</div>
+
+<div class="content" *ngIf="!displayDetails">
+  <div>
+    <mat-form-field>
+      <input matInput type="text" style="margin: 5px;" 
+        laceholder="Search"
+        [(ngModel)]="searchInput"
+      >
+      <!-- <mat-select [(value)]="selected">
+        <mat-option value="title">Title</mat-option>
+        <mat-option value="cast">Cast</mat-option>
+        <mat-option value="genre">Genre</mat-option>
+      </mat-select> -->
+    </mat-form-field>
+    <button mat-raised-button color="primary" style="margin-left: 5px;" (click)="search()">Search</button>
+  </div>
+
+  <!-- Titles -->
+  <div class="card-container" style="width: 100%;">
+    <mat-grid-list cols="3">
+      <mat-grid-tile class="grid-tile" *ngFor="let title of fTitles" [colspan]="1" [rowspan]="1">
+        <app-title  [title]="title" (click)="showDetails(title)"></app-title>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+      This project was generated with&nbsp;
+      <a href="https://cli.angular.io/" target="_blank" rel="noopener">Angular CLI</a>
+  </footer>
+</div>
+<div class="content" *ngIf="displayDetails">
+  <app-details-page [title]="displayTitle" (backClicked)="showIndex()"></app-details-page>
+</div>
