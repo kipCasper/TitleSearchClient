@@ -1,3 +1,6 @@
+# Start the client
+Running `npm start` will run the client with the proxy to hit the Azure-hosted WebAPI.
+
 # TitleSearchClient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
