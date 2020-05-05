@@ -42,20 +42,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #9c27b0;
     color: white;
     font-weight: 500;
+
+    .spacer {
+        width: 65%;
+    }
   }
 
   .toolbar img {
     margin: 0 16px;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-    color: white;
   }
 
   .grid-tile .mat-figure {
