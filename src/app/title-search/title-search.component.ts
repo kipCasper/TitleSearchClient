@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { TitleService } from './Services/title.service';
 import { Title } from './Models/Title';
 import { Subject, generate } from 'rxjs';
@@ -17,6 +17,7 @@ export class TitleSearchComponent implements OnInit {
   public selected = 'title';
   public displayDetails = false;
   public displayTitle = new Title();
+  public columnNumber = 3;
   
   public fTitles: Array<Title>;
   private titles: Array<Title>;
@@ -35,6 +36,8 @@ export class TitleSearchComponent implements OnInit {
     ).subscribe(() => {
       this.search();
     });
+
+    this.changeColumnNumber(window.innerWidth);
   }
 
   public ngOnDestroy() {
@@ -68,5 +71,15 @@ export class TitleSearchComponent implements OnInit {
     this.displayDetails = false;
     this.searchInput = '';
     this.fTitles = this.titles;
+  }
+
+  public changeColumnNumber(width: number) {    
+    const columns = Math.floor(width/250);
+    this.columnNumber = columns;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.changeColumnNumber(window.innerWidth);
   }
 }
