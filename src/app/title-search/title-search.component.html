@@ -1,0 +1,32 @@
+<div class="content" *ngIf="!displayDetails">
+    <div>
+        <mat-form-field>
+            <div class="mat-form-element">
+                <mat-label>Search</mat-label>
+                <input matInput type="text" class="input-field" laceholder="Search" [(ngModel)]="searchInput"
+                    (keydown)="inputChanged()">
+            </div>
+            <div class="mat-form-element">
+                <mat-label>Search By</mat-label>
+                <mat-select [(value)]="selected" class="select-field">
+                    <mat-option value="title">Title</mat-option>
+                    <mat-option value="cast">Cast</mat-option>
+                    <mat-option value="genre">Genre</mat-option>
+                </mat-select>
+            </div>
+        </mat-form-field>
+    </div>
+
+    <!-- Titles -->
+  <div class="card-container" style="width: 100%;">
+    <mat-grid-list cols="3" gutterSize="5px">
+      <mat-grid-tile class="grid-tile" *ngFor="let title of fTitles" [colspan]="1" [rowspan]="1">
+        <app-title  [title]="title" (click)="showDetails(title)"></app-title>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+
+<div class="content" *ngIf="displayDetails">
+    <app-details-page [title]="displayTitle" (backClicked)="showIndex()"></app-details-page>
+</div>

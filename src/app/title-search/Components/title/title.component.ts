@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Title } from 'src/app/Models/Title';
+import { Title } from '../../Models/Title';
+import { DetailsPageComponent } from '../details-page/details-page.component'
 
 @Component({
   selector: 'app-title',

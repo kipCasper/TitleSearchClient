@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Title } from 'src/app/Models/Title';
+import { Title } from '../../Models/Title';
 
 @Component({
   selector: 'app-details-page',
