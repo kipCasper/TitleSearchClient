@@ -21,7 +21,7 @@
   <div class="card-container" style="width: 100%;">
     <mat-grid-list cols="{{ columnNumber }}" gutterSize="5px">
       <mat-grid-tile class="grid-tile" *ngFor="let title of fTitles" [colspan]="1" [rowspan]="1">
-        <app-title  [title]="title" (click)="showDetails(title)"></app-title>
+        <app-title  [title]="title" [previewLength]="previewLength" (click)="showDetails(title)"></app-title>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

@@ -10,6 +10,7 @@ import { DetailsPageComponent } from '../details-page/details-page.component'
 export class TitleComponent implements OnInit {
 
   @Input() title: Title = new Title();
+  @Input() previewLength: number = 400;
 
   constructor() { }
 

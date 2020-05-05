@@ -18,6 +18,7 @@ export class TitleSearchComponent implements OnInit {
   public displayDetails = false;
   public displayTitle = new Title();
   public columnNumber = 3;
+  public previewLength = 300;
   
   public fTitles: Array<Title>;
   private titles: Array<Title>;
@@ -75,7 +76,8 @@ export class TitleSearchComponent implements OnInit {
 
   public changeColumnNumber(width: number) {    
     const columns = Math.floor(width/250);
-    this.columnNumber = columns;
+    this.columnNumber = columns > 4 ? 4 : columns;
+    this.previewLength = 400 / this.columnNumber;
   }
 
   @HostListener('window:resize', ['$event'])

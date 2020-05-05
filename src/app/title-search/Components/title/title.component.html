@@ -8,7 +8,7 @@
         </span>
 
         <p style="margin: 20px 0px;">
-            {{ title.storylines[0].description | slice:0:400}}{{ title.storylines[0].description.length > 400 ? '...' : '' }}
+            {{ title.storylines[0].description | slice:0:previewLength}}{{ title.storylines[0].description.length > previewLength ? '...' : '' }}
         </p>
     </mat-card-content>
 </mat-card>
